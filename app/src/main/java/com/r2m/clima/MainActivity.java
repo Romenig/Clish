@@ -9,9 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
@@ -21,9 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,15 +57,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -154,8 +141,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Toast.makeText(this, "Câmera",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_gallery) {
+            Toast.makeText(this, "Galeria",Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -174,7 +162,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void jSONObtido(JSONObject clima) {
-        System.out.println("Clima > " + clima);
         String str = "";
         listaDasPrevisoes = new ArrayList<String>();
         try {
@@ -188,6 +175,7 @@ public class MainActivity extends AppCompatActivity
                 prevLinha += "" + prevDia.get("dia").toString() + " " + "min " + prevDia.get("minima").toString() + " / max" + prevDia.get("maxima").toString() + "" + " tempo: " + prevDia.get("tempo").toString();
                 listaDasPrevisoes.add(prevLinha);
             }
+            /*
             adapter = new ArrayAdapter<String>(
                     getBaseContext(), // The current context (this activity)
                     R.layout.item_lista_dia, // The name of the layout ID.
@@ -196,15 +184,17 @@ public class MainActivity extends AppCompatActivity
             //montar o adapter e passar os parâmetros... colocar lista na main...
             ListView listView = (ListView) findViewById(R.id.listview_forecast);
             listView.setAdapter(adapter);
-
+            */
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         AlarmManager al = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
-        Date dataDoAlarme = new Date(al.getNextAlarmClock().getTriggerTime());
-        System.out.println("Alarme > "+dataDoAlarme.toString());
-
+        if(al != null) {
+            if(al.getNextAlarmClock() != null){
+                Date dataDoAlarme = new Date(al.getNextAlarmClock().getTriggerTime() );
+            }
+        }
 
     }
 
