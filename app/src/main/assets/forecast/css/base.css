@@ -46,7 +46,7 @@ font-size: 1.4em;
 font-weight: 300; 
 color: #333; 
 line-height: 1.8em; 
-padding-top:1em; 
+padding-top:0em; 
 padding-bottom:1.8em;
 }
 
@@ -102,7 +102,7 @@ margin-bottom: 5px;
 background-color: #fff; 
 margin-bottom: -4em; 
 padding-bottom: 3em; 
-padding-top: 4em; 
+padding-top: 0em; 
 height: auto;
 }
 .container body .clear {
@@ -220,7 +220,7 @@ font-size: .8em;
 text-align: center;
 padding-left: 10%;
 padding-right: 10%;
-padding-top:2%;
+padding-top:0%;
 padding-bottom: 5%;
 }
 .end h1 {
@@ -381,7 +381,7 @@ footer .social a:hover img {opacity: 1;}
 @media only screen and (max-width: 767px) and (min-width: 480px) {
 
 header h2 {display: none;}
-header .slogan {padding-top: 40px;}
+header .slogan {padding-top: 0px;}
 
 nav .container .logo {margin-bottom: 20px; text-align: center;}
 

@@ -2,20 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingBottom="0dp"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.r2m.clima.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_main"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="#143b4c">
 
     <WebView
+        android:layout_width="fill_parent"
+        android:layout_height="220dp"
+        android:id="@+id/webView_icone_tempo"
+        android:layout_gravity="fill_horizontal" />
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/webView_icone_tempo" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/imageView2"
+            android:layout_weight="1"
+            android:src="@drawable/imagem_um" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/imageView3"
+            android:layout_weight="1"
+            android:src="@drawable/imagem_dois" />
+    </LinearLayout>
 
 
 </LinearLayout>

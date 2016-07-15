@@ -19,6 +19,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -140,18 +142,11 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            Toast.makeText(this, "Câmera",Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_gallery) {
-            Toast.makeText(this, "Galeria",Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.nav_slideshow) {
+        if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
@@ -185,6 +180,7 @@ public class MainActivity extends AppCompatActivity
             ListView listView = (ListView) findViewById(R.id.listview_forecast);
             listView.setAdapter(adapter);
             */
+            prepararClimaDoDia();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -202,6 +198,13 @@ public class MainActivity extends AppCompatActivity
         String urlString = String.format("http://servicos.cptec.inpe.br/XML/cidade/7dias/%.2f/%.2f/previsaoLatLon.xml", lat, lon);
         obterClima = new ObterClima(this, urlString);
         obterClima.execute();
+    }
+
+    private void prepararClimaDoDia(){
+        WebView w = (WebView) findViewById(R.id.webView_icone_tempo);
+        WebSettings settings = w.getSettings();
+        settings.setJavaScriptEnabled(true);
+        w.loadUrl("file:///android_asset/forecast/demo.html");
     }
 
     @Override
